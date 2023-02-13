@@ -1,0 +1,17 @@
+user_id,url,duriation,view_time,tag,feed
+kevin,a,10,2,news,f1
+kevin,b,9,2,tech,f2
+kevin,c,8,1,joke,f3
+kevin,d,7,1,socail,f1
+kevin,e,6,5,joke,f2
+kevin,f,5,5,socail,f2
+kevin,g,4,2,joke,f3
+kevin,a,10,4,news,f1
+kevin,h,5,3,news,f3
+kevin,i,7,1,tech,f3
+kevin,j,8,1,joke,f1
+kevin,k,3,2,tech,f2
+kevin,b,9,1,tech,f2
+kevin,c,8,8,joke,f3
+kevin,d,7,7,socail,f1
+kevin,z,5,5,ai,f2
