@@ -1,0 +1,108 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rssfeed
+  labels:
+    app: rssfeed
+    service: rssfeed
+spec:
+  ports:
+  - port: 8888
+    name: http
+  selector:
+    app: rssfeed
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: rssfeed-svc
+  labels:
+    account: rssfeed-svc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rssfeed-v1
+  labels:
+    app: rssfeed
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rssfeed
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: rssfeed
+        version: v1
+    spec:
+      serviceAccountName: rssfeed-svc
+      containers:
+      - name: rssfeed
+        image: kevin_913/rssfeed
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8888
+        securityContext:
+          runAsUser: 1000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: image-proxy
+  labels:
+    app: image-proxy
+    service: image-proxy
+spec:
+  ports:
+  - port: 8889
+    name: http
+  selector:
+    app: image-proxy
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: image-proxy-svc
+  labels:
+    account: image-proxy-svc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-proxy-v1
+  labels:
+    app: image-proxy
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-proxy
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: image-proxy
+        version: v1
+    spec:
+      serviceAccountName: image-proxy-svc
+      containers:
+      - name: image-proxy
+        image: kevin_913/proxy
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8889
+        # securityContext:
+        #   runAsUser: 1000
+          
+        volumeMounts:
+        - mountPath: /work/images
+          name: images
+      volumes:
+      - name: images
+        hostPath:
+          path: /mnt/d/workspace/podcase/proxy/images
+          # type: Directory
