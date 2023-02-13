@@ -19,7 +19,7 @@
 - 用golang创建api，提供ES以及recommenddb里面的数据。
 - 用Flutter创建app来呈现播客数据。
 
-##### usage 数据流程
+##### Usage 数据流程
 - Flutter里面埋点。
 - 将Usage数据发送到kafka。
   - 生成最新的usage数据文件。
