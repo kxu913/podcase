@@ -1,8 +1,14 @@
 # 播客app
 
 #### App预览图
+- 首页
+<img width="389" alt="1png" src="https://user-images.githubusercontent.com/6084259/218388140-d969e657-0d86-48bb-aa59-ae3a406c10b9.png">
 
+- 列表
+<img width="396" alt="2" src="https://user-images.githubusercontent.com/6084259/218388165-d52fb1af-9599-443d-bc80-0b52d99091b7.png">
 
+- 播放页面
+<img width="330" alt="3" src="https://user-images.githubusercontent.com/6084259/218388186-40ab29d2-3915-4b66-b477-51766f088b6f.png">
 
 #### 系统分层图
 
